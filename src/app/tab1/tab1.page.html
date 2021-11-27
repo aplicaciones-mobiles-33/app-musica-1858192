@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title>
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      {{saludo}}
+                  </ion-col>
+                  <ion-col class="settings">
+                      <ion-icon name="notifications-outline" size="large"></ion-icon>
+                      <ion-icon name="time-outline" size="large"></ion-icon>
+                      <ion-icon name="settings-outline" size="large"></ion-icon>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content [fullscreen]="true">
+    <app-tabuno></app-tabuno>
+    <app-tabuno2></app-tabuno2>
+    <h2>
+        <p>
+            POPULARES ENTRE LOS OYENTES
+        </p>
+    </h2>
+    <ion-row *ngFor="let cancion of canciones">
+        <ion-col>
+            <a [routerLink]="['/tabs/cancion', cancion['key']]">
+                <ion-card class="cancionLista">
+                    <ion-row size="12">
+                        <ion-col size="3">
+                            <img src="{{cancion['imageURL']}}" alt="">
+                        </ion-col>
+                        <ion-col>
+                            <ion-row>
+                                <h2>
+                                    {{cancion['titulo']}}
+                                </h2>
+                            </ion-row>
+                            <ion-row>
+                                <h2>
+                                    {{cancion['autor']}}
+                                </h2>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </ion-card>
+            </a>
+        </ion-col>
+    </ion-row>
+</ion-content>
+  

@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            <h1>
+                Buscar
+            </h1>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-input placeholder='Artistas,canciones o podcasts' type="text" [(ngModel)]="palabra_clave" (ionChange)="filtrarCanciones()">
+        <ion-icon name='search-outline' size="large"></ion-icon>
+    </ion-input>
+    <ion-grid *ngIf="palabra_clave != ''; else sinbusqueda">
+        <ion-label>
+            <h2>
+                Resultados
+            </h2>
+        </ion-label>
+        <ion-row *ngFor="let cancion of cancionesFiltradas">
+            <a [routerLink]="['/tabs/cancion', cancion.key]">
+                <ion-card>
+                    <ion-row>
+                        <ion-col>
+                            <img src="{{cancion['imageURL']}}" alt="">
+                        </ion-col>
+                        <ion-col>
+                            <h5>
+                                <p>{{cancion['titulo']}}</p>
+                                <p>{{cancion['autor']}}</p>
+                            </h5>
+                        </ion-col>
+                    </ion-row>
+                </ion-card>
+            </a>
+        </ion-row>
+    </ion-grid>
+    <ng-template #sinbusqueda>
+        <app-tabdos></app-tabdos>
+    </ng-template>
+</ion-content>

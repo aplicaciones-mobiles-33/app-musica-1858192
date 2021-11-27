@@ -1,0 +1,32 @@
+<ion-grid>
+  <ion-row size="12">
+      <ion-col *ngFor="let cancion of canciones" size="6">
+          <a [routerLink]="['/tabs/cancion', cancion.key]">
+              <ion-card>
+                  <ion-row>
+                      <ion-col>
+                          <img src="{{cancion['imageURL']}}" alt="">
+                      </ion-col>
+                      <ion-col>
+                          <ion-row>
+                              <ion-label>
+                                  <h2>
+                                      {{cancion['titulo']}}
+                                  </h2>
+                              </ion-label>
+                          </ion-row>
+                          <br>
+                          <ion-row>
+                              <ion-label>
+                                  <h2>
+                                      {{cancion['autor']}}
+                                  </h2>
+                              </ion-label>
+                          </ion-row>
+                      </ion-col>
+                  </ion-row>
+              </ion-card>
+          </a>
+      </ion-col>
+  </ion-row>
+</ion-grid>
